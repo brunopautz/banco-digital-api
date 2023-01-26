@@ -16,24 +16,24 @@ class Account extends Model
         'client'
     ];
 
-    public function movimentacoes()
+    public function movements()
     {
-        $movimentacoes = $this->hasMany(Movement::class, 'account_id')->get();
-        $saldo = 0;
+        $movements = $this->hasMany(Movement::class, 'account_id')->get();
+        $balance = 0;
 
-        foreach ($movimentacoes as $movimento) {
+        foreach ($movements as $movimento) {
             if ($movimento->type == 1) {
-                $saldo += $movimento->value;
+                $balance += $movimento->value;
             } else {
-                $saldo -= $movimento->value;
+                $balance -= $movimento->value;
             }
-
+            $movimento->value = number_format($movimento->value, 2,',', '.');
             $movimento->data = date_format($movimento->created_at, 'd/m/Y H:i:s');
         }
 
         return [
-            "movimentacoes" => $movimentacoes,
-            "saldo" => $saldo
+            "movements" => $movements,
+            "balance" => $balance
         ];
     }
 }
