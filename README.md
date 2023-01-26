@@ -20,9 +20,9 @@ Em seguida execute o seguinte comando para rodar as migrations e popular o banco
 
 ```bash
 # install migrations
-$ php artisan migrate:fresh --seed
+php artisan migrate:fresh --seed
 
 # serve running http://127.0.0.1:8000
-$ php artisan serve
+php artisan serve
 
 ```
