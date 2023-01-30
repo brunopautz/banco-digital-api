@@ -6,29 +6,37 @@ Api do banco digital construida em PHP/Laravel, utilizando um banco de dados rel
 
 Essas foram as tecnologias utilizadas para construção da API.
 
-- PHP v8.2.0
+- PHP v8.1.0+
 - Composer 2.5.1   
 - 10.4.27-MariaDB  
 - Node v16.10.0
 
 
 ## Inicialização do Projeto
-
-Clone os arquivos em seu computador, configure o arquivo .env, definindo um banco de dados e usuario e senha para que Laravel tenha acesso.
-
-Em seguida execute o seguinte comando para rodar as migrations e popular o banco de dados dentro da pasta do projeto:
-
 ```bash
 # clone repositorio
 git clone https://github.com/brunopautz/banco-digital-api.git
 
-# install migrations
+# acesse a pasta onde estao os arquivos do projeto
+
+# instale as dependências do projeto Laravel
+composer install
+
+# configura o arquivo .env com as credencias de acesso ao banco de dados
+
+# rode as migrations com os seed para construir as tabelas do banco de dados e popular com dados
 php artisan migrate:fresh --seed
 
-# serve running http://127.0.0.1:8000
-php artisan serve
+#  gerar key do app
+php artisan key:generate
 
+# Rode o servidor: http://127.0.0.1:8000
+php artisan serve
 ```
+
+## Teste sistemas
+
+Foi criado um sistema web para simular acesso a api, lá é possivel ver saldo, sacar e depositar, o diretorio do projeto esta em [https://github.com/brunopautz/banco-digital-web].
 
 ## Teste in Laravel
 
