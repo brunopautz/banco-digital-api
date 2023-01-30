@@ -49,4 +49,8 @@ Após executar os comandos acima, o sistema deverá estar pronto para ser testad
 ```bash
 # executa os test
 php artisan test
+
+# caso tenha algum problema com o comando acima, execute diretamente com :
+
+vendor\bin\phpunit .\tests\Feature\AccountTest.php
 ```
