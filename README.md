@@ -26,3 +26,16 @@ php artisan migrate:fresh --seed
 php artisan serve
 
 ```
+
+## Teste in Laravel
+
+Após executar os comandos acima, o sistema deverá estar pronto para ser testado, os testes que serão realizados são:
+- valid account: verifica se a conta existe
+- return datas account: verifica se a conta existe e retorna informações da conta
+- desposit account: deposita um valor na conta informada, valores devem ser > 0  
+- saque account: saca o valor da conta mas verifica se valor informado nao é maior que o saldo e se saque é > 0
+
+```bash
+# executa os test
+php artisan test
+```

@@ -22,9 +22,13 @@ class AccountController extends Controller
     public function account($account)
     {
         $account = Account::where('account', $account)->first();
+        if ($account == null) {
+            return response()->json(['errors' => ['account' => ['Conta inválida.']]], 422); 
+        }
+
         $dados = $account->movements();
       
-        $account['balance'] = $dados['balance'];
+        $account['balance'] = number_format($dados['balance'], 2,',', '.');
         $datas = [
             "account" => $account,
             "movements" => $dados['movements']
@@ -45,12 +49,12 @@ class AccountController extends Controller
         $deposito = new Movement();
         $deposito->account_id = $account->id;
         $deposito->value = floatval($request->value);
-        $deposito->type = $request->type;
+        $deposito->type = 1;
         $deposito->save();
 
 
         $dados = $account->movements();
-        $account['balance'] = number_format($dados['balance'], 2,',', '.');;
+        $account['balance'] = number_format($dados['balance'], 2,',', '.');
 
         $datas = [
             'account' => $account,
@@ -79,7 +83,7 @@ class AccountController extends Controller
         $saque = new Movement();
         $saque->account_id = $account->id;
         $saque->value = floatval($request->value);
-        $saque->type = $request->type;
+        $saque->type = 0;
         $saque->save();
 
         $account['balance'] = number_format(($account['balance'] - $saque->value), 2, ',', '.');
