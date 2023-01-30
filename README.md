@@ -14,11 +14,14 @@ Essas foram as tecnologias utilizadas para construção da API.
 
 ## Inicialização do Projeto
 
-Após clonar os arquivos em seu computador, configure o arquivo .env, definindo um banco de dados e usuario e senha para que Laravel tenha acesso.
+Clone os arquivos em seu computador, configure o arquivo .env, definindo um banco de dados e usuario e senha para que Laravel tenha acesso.
 
 Em seguida execute o seguinte comando para rodar as migrations e popular o banco de dados dentro da pasta do projeto:
 
 ```bash
+# clone repositorio
+git clone https://github.com/brunopautz/banco-digital-api.git
+
 # install migrations
 php artisan migrate:fresh --seed
 
